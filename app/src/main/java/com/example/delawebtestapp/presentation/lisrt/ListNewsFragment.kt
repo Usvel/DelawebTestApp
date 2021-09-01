@@ -123,27 +123,29 @@ class ListNewsFragment : BaseFragment() {
         }
 
         viewModel.networkState.observe(viewLifecycleOwner) {
-            when (it) {
-                NetworkRequestState.LOADING ->
-                    binding.fragmentContentProgressBar.isVisible = true
-                NetworkRequestState.ERROR -> {
-                    binding.fragmentContentProgressBar.isVisible = false
-                    if (firstResponseError) {
-                        Toast.makeText(
-                            context,
-                            getString(R.string.error_new_news_massage),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        binding.fragmentContentErrorLinear.isVisible = true
+            it?.let {
+                when (it) {
+                    NetworkRequestState.LOADING ->
+                        binding.fragmentContentProgressBar.isVisible = true
+                    NetworkRequestState.ERROR -> {
+                        binding.fragmentContentProgressBar.isVisible = false
+                        if (firstResponseError) {
+                            Toast.makeText(
+                                context,
+                                getString(R.string.error_new_news_massage),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            binding.fragmentContentErrorLinear.isVisible = true
+                        }
                     }
-                }
-                NetworkRequestState.SUCCESS -> {
-                    if (!firstResponseError) {
-                        firstResponseError = true
-                        binding.fragmentContentErrorLinear.isVisible = false
+                    NetworkRequestState.SUCCESS -> {
+                        if (!firstResponseError) {
+                            firstResponseError = true
+                            binding.fragmentContentErrorLinear.isVisible = false
+                        }
+                        binding.fragmentContentProgressBar.isVisible = false
                     }
-                    binding.fragmentContentProgressBar.isVisible = false
                 }
             }
         }
