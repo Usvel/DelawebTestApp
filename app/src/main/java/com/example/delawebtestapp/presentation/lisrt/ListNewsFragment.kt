@@ -1,12 +1,11 @@
 package com.example.delawebtestapp.presentation.lisrt
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -76,7 +75,6 @@ class ListNewsFragment : BaseFragment() {
                 val visibleIteamCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount
                 val pastVisiblesIteams = layoutManager.findFirstVisibleItemPosition()
-
                 if ((visibleIteamCount + pastVisiblesIteams) >= totalItemCount) {
                     viewModel.getNextPage()
                 }
@@ -85,12 +83,7 @@ class ListNewsFragment : BaseFragment() {
 
         initAdapter()
 
-        val layoutManager: RecyclerView.LayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-        layoutManager.supportsPredictiveItemAnimations()
         binding.recyclerNews.apply {
-            setLayoutManager(layoutManager)
             addOnScrollListener(scrollListener)
             addItemDecoration(decoration)
             adapter = newsAdapter
@@ -99,7 +92,8 @@ class ListNewsFragment : BaseFragment() {
 
     private fun initAdapter() {
         newsAdapter =
-            NewsAdapter() { position -> fragmentInterractor?.onOpenNews(position) }
+            NewsAdapter { position -> fragmentInterractor?.onOpenNews(position) }
+        newsAdapter?.setHasStableIds(false)
     }
 
     private fun setListeners() {
@@ -135,13 +129,11 @@ class ListNewsFragment : BaseFragment() {
                 NetworkRequestState.ERROR -> {
                     binding.fragmentContentProgressBar.isVisible = false
                     if (firstResponseError) {
-                        //Придумать доугой вывод ошибки
-                        val builder = AlertDialog.Builder(context)
-                        builder.setTitle(getString(R.string.error_new_news_title))
-                            .setMessage(getString(R.string.error_new_news_massage))
-                            .setPositiveButton(getString(R.string.error_new_news_btn)) { dialog, id ->
-                                dialog.cancel()
-                            }.create().show()
+                        Toast.makeText(
+                            context,
+                            getString(R.string.error_new_news_massage),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
                         binding.fragmentContentErrorLinear.isVisible = true
                     }
@@ -165,6 +157,7 @@ class ListNewsFragment : BaseFragment() {
         super.onDestroyView()
         _binding = null
         newsAdapter = null
+        _binding?.recyclerNews?.adapter = null
     }
 
     override fun onDestroy() {

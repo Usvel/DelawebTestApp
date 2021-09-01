@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -17,7 +16,7 @@ import com.example.delawebtestapp.databinding.CardviewNewsBinding
 import com.example.delawebtestapp.domain.entitys.News
 
 class NewsAdapter(
-    var items: MutableList<News> = mutableListOf(),
+    private var items: MutableList<News> = mutableListOf(),
     private val onClick: (Int) -> Unit
 ) :
     RecyclerView.Adapter<NewsViewHolder>() {
@@ -36,7 +35,10 @@ class NewsAdapter(
     }
 
     fun setListNews(newItems: MutableList<News>) {
-        items = newItems
+        val lastSize = items.size
+        val newSize = newItems.size - 1
+        items = newItems.toMutableList()
+        notifyItemRangeInserted(lastSize, newSize)
     }
 
     override fun getItemCount() = items.size
@@ -74,23 +76,5 @@ class NewsViewHolder(
             }
         })
             .into(binding.cardViewImageNews)
-    }
-}
-
-class DiffCallback(oldList: List<News>, newList: List<News>) : DiffUtil.Callback() {
-
-    private val oldList = oldList.toList()
-    private val newList = newList.toList()
-
-    override fun getOldListSize() = oldList.size
-
-    override fun getNewListSize() = newList.size
-
-    override fun areItemsTheSame(oldPos: Int, newPos: Int): Boolean {
-        return oldList[oldPos].title == newList[newPos].title
-    }
-
-    override fun areContentsTheSame(oldPos: Int, newPos: Int): Boolean {
-        return oldList[oldPos] == newList[newPos]
     }
 }

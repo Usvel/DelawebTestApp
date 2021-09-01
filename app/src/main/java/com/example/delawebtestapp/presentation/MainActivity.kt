@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), FragmentListNewsInterractor, FragmentN
             } catch (ex: ActivityNotFoundException) {
                 Toast.makeText(
                     applicationContext,
-                    "Нету приложения для открытия!",
+                    getString(R.string.error_open_url),
                     Toast.LENGTH_SHORT
                 ).show()
             }

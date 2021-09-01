@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -18,7 +19,6 @@ import com.example.delawebtestapp.App
 import com.example.delawebtestapp.R
 import com.example.delawebtestapp.databinding.FragmentNewsBinding
 import com.example.delawebtestapp.presentation.FragmentNewsInterractor
-import com.example.delawebtestapp.presentation.MainActivity
 import com.example.delawebtestapp.presentation.base.BaseFragment
 
 class NewsFragment : BaseFragment() {
@@ -56,7 +56,6 @@ class NewsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
-
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
         idNews = requireArguments().getInt(ARG_ID_NEWS)
         val view = binding.root
@@ -72,7 +71,7 @@ class NewsFragment : BaseFragment() {
     }
 
     private fun setBackBtn() {
-        (requireActivity() as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setListeners() {
@@ -131,7 +130,7 @@ class NewsFragment : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (requireActivity() as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         _binding = null
     }
 
