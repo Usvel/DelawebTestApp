@@ -159,7 +159,6 @@ class ListNewsFragment : BaseFragment() {
         super.onDestroyView()
         _binding = null
         newsAdapter = null
-        _binding?.recyclerNews?.adapter = null
     }
 
     override fun onDestroy() {
