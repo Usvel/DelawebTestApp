@@ -3,7 +3,8 @@ package com.example.delawebtestapp.di
 import android.content.Context
 import com.example.delawebtestapp.di.news.NewsComponent
 import com.serma.fintechtestapp.di.hot.ListNewsComponent
-import dagger.*
+import dagger.BindsInstance
+import dagger.Component
 import javax.inject.Singleton
 
 @Component(modules = [RetrofitModule::class, CacheModule::class, ViewModelFactoryModule::class])
