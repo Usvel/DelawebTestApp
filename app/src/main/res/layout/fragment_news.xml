@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.news.NewsFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            tools:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/textTitleNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Сеть доставки суши «Ёбидоёби» извинилась за рекламу с темнокожим мужчиной. Из-за нее компанию и ее сооснователя атаковали сторонники «Мужского государства»" />
+
+        <TextView
+            android:id="@+id/textContentNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+            tools:text="Сеть доставки суши и роллов «Ёбидоёби» извинилась за рекламу с темнокожим мужчиной после того, как на нее обратил внимание основатель «Мужского государства» Владислав Поздняков. Он потребовал удалить рекламу и устроил травлю против компании, пишет «Коммерсант…" />
+
+        <Button
+            android:id="@+id/btnUrlNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/readInUrl"
+            android:textColor="@color/purple_700" />
+    </LinearLayout>
+
+
+</ScrollView>

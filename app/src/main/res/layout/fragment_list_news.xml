@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.lisrt.ListNewsFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/cardview_news" />
+
+    <LinearLayout
+        android:id="@+id/fragmentContentErrorLinear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/fragmentContentErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/error" />
+
+        <Button
+            android:id="@+id/fragmentContentRetryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/retry"
+            android:textColor="@color/purple_700" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/fragmentContentProgressBar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center" />
+</FrameLayout>

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">DelawebTestApp</string>
+
+    <string name="error">При загрузке данных произошла ошибка. Проверьте ваше подключение к сети.</string>
+    <string name="retry">Повторить</string>
+    <string name="error_new_news_title">"Ошибка загрузки новыйх новосей!"</string>
+    <string name="error_new_news_massage">"Скорей всего перешли лимит в 100 новостей"</string>
+    <string name="error_new_news_btn">"ОК"</string>
+
+    <string name="readInUrl">читать на сайте</string>
+
 </resources>
