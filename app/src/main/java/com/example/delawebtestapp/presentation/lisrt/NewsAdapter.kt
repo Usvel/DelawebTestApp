@@ -38,7 +38,9 @@ class NewsAdapter(
         val lastSize = items.size
         val newSize = newItems.size - 1
         items = newItems.toMutableList()
-        notifyItemRangeInserted(lastSize, newSize)
+        if (newSize > lastSize) {
+            notifyItemRangeInserted(lastSize, newSize)
+        }
     }
 
     override fun getItemCount() = items.size
