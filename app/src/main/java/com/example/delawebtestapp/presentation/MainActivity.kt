@@ -10,7 +10,7 @@ import com.example.delawebtestapp.R
 import com.example.delawebtestapp.presentation.lisrt.ListNewsFragment
 import com.example.delawebtestapp.presentation.news.NewsFragment
 
-class MainActivity : AppCompatActivity(), FragmentListNewsInterractor, FragmentNewsInterractor {
+class MainActivity : AppCompatActivity(), FragmentListNewsInteractor, FragmentNewsInteractor {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

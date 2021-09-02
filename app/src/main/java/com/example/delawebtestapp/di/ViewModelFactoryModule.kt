@@ -5,7 +5,6 @@ import com.serma.fintechtestapp.presentation.factory.DaggerViewModelFactory
 import dagger.Binds
 import dagger.Module
 
-
 @Module
 abstract class ViewModelFactoryModule {
 

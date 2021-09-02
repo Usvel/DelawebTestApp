@@ -18,12 +18,12 @@ import com.bumptech.glide.request.target.Target
 import com.example.delawebtestapp.App
 import com.example.delawebtestapp.R
 import com.example.delawebtestapp.databinding.FragmentNewsBinding
-import com.example.delawebtestapp.presentation.FragmentNewsInterractor
+import com.example.delawebtestapp.presentation.FragmentNewsInteractor
 import com.example.delawebtestapp.presentation.base.BaseFragment
 
 class NewsFragment : BaseFragment() {
 
-    private var fragmentInterractor: FragmentNewsInterractor? = null
+    private var fragmentInteractor: FragmentNewsInteractor? = null
 
     private lateinit var viewModel: NewsViewModel
     private var idNews = 0
@@ -42,8 +42,8 @@ class NewsFragment : BaseFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is FragmentNewsInterractor) {
-            fragmentInterractor = context
+        if (context is FragmentNewsInteractor) {
+            fragmentInteractor = context
         }
     }
 
@@ -77,7 +77,7 @@ class NewsFragment : BaseFragment() {
     private fun setListeners() {
         binding.btnUrlNews.setOnClickListener {
             viewModel.news.value?.url?.let { url ->
-                fragmentInterractor?.openWebPage(
+                fragmentInteractor?.openWebPage(
                     url
                 )
             }
@@ -143,6 +143,6 @@ class NewsFragment : BaseFragment() {
 
     override fun onDetach() {
         super.onDetach()
-        fragmentInterractor = null
+        fragmentInteractor = null
     }
 }

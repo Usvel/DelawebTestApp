@@ -13,5 +13,4 @@ class DaggerViewModelFactory @Inject constructor(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return map[modelClass]!!.get() as T
     }
-
 }

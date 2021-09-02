@@ -15,13 +15,13 @@ import com.example.delawebtestapp.App
 import com.example.delawebtestapp.R
 import com.example.delawebtestapp.data.NetworkRequestState
 import com.example.delawebtestapp.databinding.FragmentListNewsBinding
-import com.example.delawebtestapp.presentation.FragmentListNewsInterractor
+import com.example.delawebtestapp.presentation.FragmentListNewsInteractor
 import com.example.delawebtestapp.presentation.base.BaseFragment
 import com.example.delawebtestapp.presentation.factory.NewsAdapter
 
 class ListNewsFragment : BaseFragment() {
 
-    private var fragmentInterractor: FragmentListNewsInterractor? = null
+    private var fragmentInteractor: FragmentListNewsInteractor? = null
 
     private lateinit var viewModel: ListNewsViewModel
 
@@ -40,8 +40,8 @@ class ListNewsFragment : BaseFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is FragmentListNewsInterractor) {
-            fragmentInterractor = context
+        if (context is FragmentListNewsInteractor) {
+            fragmentInteractor = context
         }
     }
 
@@ -92,7 +92,7 @@ class ListNewsFragment : BaseFragment() {
 
     private fun initAdapter() {
         newsAdapter =
-            NewsAdapter { position -> fragmentInterractor?.onOpenNews(position) }
+            NewsAdapter { position -> fragmentInteractor?.onOpenNews(position) }
         newsAdapter?.setHasStableIds(false)
     }
 
@@ -163,6 +163,6 @@ class ListNewsFragment : BaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        fragmentInterractor = null
+        fragmentInteractor = null
     }
 }

@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NewsApi {
+
     @GET("everything?q=russia&language=ru&sortBy=publishedAt")
     fun getListNews(@Query("page") page: Int): Single<NewsDto>
 }

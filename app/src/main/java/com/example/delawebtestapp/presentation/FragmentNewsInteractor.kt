@@ -1,5 +1,6 @@
 package com.example.delawebtestapp.presentation
 
-interface FragmentNewsInterractor {
+interface FragmentNewsInteractor {
+
     fun openWebPage(url: String)
 }

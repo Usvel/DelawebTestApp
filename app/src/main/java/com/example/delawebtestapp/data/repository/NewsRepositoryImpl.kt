@@ -9,6 +9,7 @@ import javax.inject.Inject
 class NewsRepositoryImpl @Inject constructor(
     private val memoryCashe: MemoryCache
 ) : NewsRepository {
+
     override fun getNews(index: Int): Single<News> {
         return memoryCashe.getNews(index)
     }

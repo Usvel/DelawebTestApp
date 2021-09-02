@@ -1,6 +1,6 @@
 package com.example.delawebtestapp.presentation
 
-interface FragmentListNewsInterractor {
+interface FragmentListNewsInteractor {
 
     fun onOpenNews(index: Int)
 }
