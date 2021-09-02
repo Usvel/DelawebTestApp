@@ -4,8 +4,10 @@ import com.example.delawebtestapp.domain.entitys.News
 import io.reactivex.Single
 import java.util.ArrayList
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class MemoryCacheImpl @Inject constructor() : MemoryCache {
+@Singleton
+class MemoryCacheImpl @Inject constructor() : MemoryCachePage, MemoryCacheNews {
 
     private val allLoadNews: ArrayList<News> = ArrayList()
     private var totalResults: Int = 0

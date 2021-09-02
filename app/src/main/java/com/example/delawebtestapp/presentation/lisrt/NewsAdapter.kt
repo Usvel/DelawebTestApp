@@ -76,7 +76,6 @@ class NewsViewHolder(
             ): Boolean {
                 return false
             }
-        })
-            .into(binding.cardViewImageNews)
+        }).into(binding.cardViewImageNews)
     }
 }
