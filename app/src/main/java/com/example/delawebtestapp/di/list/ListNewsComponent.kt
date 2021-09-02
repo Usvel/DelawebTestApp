@@ -1,6 +1,6 @@
 package com.serma.fintechtestapp.di.hot
 
-import com.example.delawebtestapp.presentation.lisrt.ListNewsFragment
+import com.example.delawebtestapp.presentation.list.ListNewsFragment
 import com.serma.fintechtestapp.di.scope.FragmentScope
 import dagger.Subcomponent
 

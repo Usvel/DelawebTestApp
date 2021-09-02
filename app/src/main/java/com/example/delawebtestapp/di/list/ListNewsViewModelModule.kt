@@ -5,7 +5,7 @@ import com.example.delawebtestapp.data.remote.PageRemoteSource
 import com.example.delawebtestapp.data.remote.PageRemoteSourceImpl
 import com.example.delawebtestapp.data.repository.PageRepositoryImp
 import com.example.delawebtestapp.domain.repositorys.PageRepository
-import com.example.delawebtestapp.presentation.lisrt.ListNewsViewModel
+import com.example.delawebtestapp.presentation.list.ListNewsViewModel
 import com.serma.fintechtestapp.di.keys.ViewModelKey
 import dagger.Binds
 import dagger.Module

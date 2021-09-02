@@ -1,4 +1,4 @@
-package com.example.delawebtestapp.presentation.lisrt
+package com.example.delawebtestapp.presentation.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

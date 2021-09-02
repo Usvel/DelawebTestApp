@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.delawebtestapp.R
-import com.example.delawebtestapp.presentation.lisrt.ListNewsFragment
+import com.example.delawebtestapp.presentation.list.ListNewsFragment
 import com.example.delawebtestapp.presentation.news.NewsFragment
 
 class MainActivity : AppCompatActivity(), FragmentListNewsInteractor, FragmentNewsInteractor {
