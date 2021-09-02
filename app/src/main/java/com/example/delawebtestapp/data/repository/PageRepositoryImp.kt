@@ -1,6 +1,6 @@
 package com.example.delawebtestapp.data.repository
 
-import com.example.delawebtestapp.data.cache.MemoryCache
+import com.example.delawebtestapp.data.cache.MemoryCachePage
 import com.example.delawebtestapp.data.mapper.NewsDtoMapper
 import com.example.delawebtestapp.data.remote.PageRemoteSource
 import com.example.delawebtestapp.di.RetrofitModule
@@ -10,39 +10,39 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class PageRepositoryImp @Inject constructor(
-    private val memoryCashe: MemoryCache,
+    private val memoryCache: MemoryCachePage,
     private val pageRemoteSource: PageRemoteSource,
     private val newsDtoMapper: NewsDtoMapper
 ) : PageRepository {
 
     private fun getPageNews(page: Int): Single<List<News>> {
         return pageRemoteSource.getNews(page).map { result ->
-            memoryCashe.setTotalResults(result.totalResults)
+            memoryCache.setTotalResults(result.totalResults)
             result.articles
         }.map { list ->
             list.map {
                 newsDtoMapper.toEntity(it)
             }.also {
-                memoryCashe.setNewPage(it)
+                memoryCache.setNewPage(it)
             }
         }
     }
 
     override fun getListNews(): Single<List<News>> {
-        return when (memoryCashe.getPage()) {
-            0 -> getPageNews(memoryCashe.getPage() + 1)
+        return when (memoryCache.getPage()) {
+            0 -> getPageNews(memoryCache.getPage() + 1)
             else -> getLoadedNews()
         }
     }
 
     private fun getLoadedNews(): Single<List<News>> {
-        return memoryCashe.getLoadedNews()
+        return memoryCache.getLoadedNews()
     }
 
     override fun getNextPage(): Single<List<News>> {
-        val nextPage = memoryCashe.getPage() + 1
-        return if (nextPage * RetrofitModule.PAGE_SIZE <= memoryCashe.getTotalResults()) {
-            getPageNews(memoryCashe.getPage() + 1)
+        val nextPage = memoryCache.getPage() + 1
+        return if (nextPage * RetrofitModule.PAGE_SIZE <= memoryCache.getTotalResults()) {
+            getPageNews(memoryCache.getPage() + 1)
         } else {
             Single.just(listOf())
         }

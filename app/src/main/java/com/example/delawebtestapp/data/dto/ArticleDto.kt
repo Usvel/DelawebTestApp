@@ -1,6 +1,6 @@
 package com.example.delawebtestapp.data.dto
 
-import java.util.*
+import java.util.Date
 
 data class ArticleDto(
     val source: Source? = null,
