@@ -16,7 +16,7 @@ object RetrofitModule {
 
     private const val URL = "https://newsapi.org/v2/"
     //825bcfa7c7544a229c61e1f197a8a478
-    private const val API_KEY = "825bcfa7c7544a229c61e1f197a8a478"
+    private const val API_KEY = "0bb6383f2e0a44b8b2706c571cb5921a"
     const val PAGE_SIZE = 10
 
     @Provides
